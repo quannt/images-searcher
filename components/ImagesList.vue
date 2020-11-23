@@ -90,10 +90,6 @@ export default {
   transition: 0.4s color;
 }
 
-.images-container:hover figure:not(:hover) {
-  opacity: 0.4;
-}
-
 @media screen and (max-width: 750px) {
   .images-container {
     column-gap: 0px;
