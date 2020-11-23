@@ -48,6 +48,18 @@
                   </div>
                 </div>
               </button>
+              <div
+                class="border mb-4 rounded py-4 px-2 text-left text-gray-900 border-dashed"
+              >
+                <div class="flex space-between">
+                  <input
+                    v-model="newList"
+                    class="w-full"
+                    placeholder="Add a new list, type in the name and press Enter..."
+                    @keydown.enter="handleAddNewList"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -90,7 +102,9 @@ export default {
   },
 
   data() {
-    return {}
+    return {
+      newList: '',
+    }
   },
 
   computed: {
@@ -102,6 +116,7 @@ export default {
   methods: {
     ...mapMutations({
       addImage: 'addImage',
+      addList: 'add',
     }),
     imageBelongsToList(listKey) {
       const imageId = _get(this.image, 'id', '') || ''
@@ -112,6 +127,12 @@ export default {
         listKey,
         image: this.image,
       })
+    },
+    handleAddNewList() {
+      this.addList({
+        listKey: this.newList,
+      })
+      this.newList = ''
     },
   },
 }
