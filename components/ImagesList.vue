@@ -3,15 +3,33 @@
     <figure v-for="image in images" :key="image.id" class="item">
       <img :src="image.urls.regular" />
       <figcaption>
-        Image by @{{ image && image.profile && image.profile.name }}
+        <span
+          >Image by @{{ image && image.profile && image.profile.name }}</span
+        >
+        <div>
+          <button>
+            <download-icon />
+          </button>
+          <button>
+            <plus-icon />
+          </button>
+        </div>
       </figcaption>
     </figure>
   </div>
 </template>
 
 <script>
+import DownloadIcon from '@/assets/icons/download.svg?inline'
+import PlusIcon from '@/assets/icons/plus.svg?inline'
+
 export default {
   name: 'ImagesList',
+
+  components: {
+    DownloadIcon,
+    PlusIcon,
+  },
 
   props: {
     images: {
