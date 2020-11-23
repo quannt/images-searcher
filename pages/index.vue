@@ -57,12 +57,13 @@ export default {
       await this.searchImages({
         keyword: this.keyword,
         page: this.page,
+        overwrite: false,
       })
     },
     handleKeywordChange: _debounce(async function (keyword) {
-      await this.searchImages({ keyword, page: this.page })
+      await this.searchImages({ keyword, page: this.page, overwrite: true })
     }, 500),
-    async searchImages({ keyword, page }) {
+    async searchImages({ keyword, page, overwrite }) {
       this.isLoading = true
       try {
         const result = await this.$imageSearch({
@@ -70,7 +71,12 @@ export default {
           page,
           perPage: this.perPage,
         })
-        this.images = [...this.images, ...(result.results || [])]
+        if (overwrite) {
+          this.images = result.results || []
+        } else {
+          this.images = [...this.images, ...(result.results || [])]
+        }
+
         this.total = result.total || 0
         this.totalPages = result.total_pages || 0
       } catch (error) {

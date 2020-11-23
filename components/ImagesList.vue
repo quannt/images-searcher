@@ -1,7 +1,18 @@
 <template>
   <div>
-    <div class="images-container">
-      <figure v-for="image in images" :key="image.id" class="item">
+    <div
+      class="images-container"
+      :class="{
+        'masonry-container': masonry,
+        'grid grid-cols-4 gap-2 items-end': !masonry,
+      }"
+    >
+      <figure
+        v-for="image in images"
+        :key="image.id"
+        class="item"
+        :class="{ 'masonry-item': masonry }"
+      >
         <img :src="image.urls.regular" />
         <figcaption class="caption">
           <a :href="_get(image, 'user.links.html')" target="_blank">
@@ -69,7 +80,7 @@ export default {
 
   props: {
     images: {
-      type: Array,
+      type: [Array, Object],
       required: false,
       default() {
         return []
@@ -78,6 +89,10 @@ export default {
     hasMoreImages: {
       type: Boolean,
       default: false,
+    },
+    masonry: {
+      type: Boolean,
+      default: true,
     },
   },
 
@@ -110,9 +125,12 @@ export default {
 <style scoped>
 /* https://codepen.io/dudleystorey/pen/yqrhw */
 .images-container {
+  width: 100%;
+}
+
+.masonry-container {
   column-width: 320px;
   column-gap: 15px;
-  width: 100%;
 }
 
 .images-container .item {
@@ -122,7 +140,9 @@ export default {
   margin: 0 2px 15px;
   padding: 15px;
   padding-bottom: 10px;
-  transition: opacity 0.4s ease-in-out;
+}
+
+.masonry-item {
   display: inline-block;
   column-break-inside: avoid;
 }
