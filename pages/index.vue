@@ -56,7 +56,7 @@ export default {
         console.log(error)
       }
       this.isLoading = false
-    }, 300),
+    }, 500),
   },
 }
 </script>

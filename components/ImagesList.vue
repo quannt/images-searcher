@@ -3,11 +3,13 @@
     <figure v-for="image in images" :key="image.id" class="item">
       <img :src="image.urls.regular" />
       <figcaption class="caption">
-        <span
-          >Image by @{{ image && image.profile && image.profile.name }}</span
-        >
+        <a :href="_get(image, 'user.links.html')" target="_blank">
+          <span class="text-sm text-gray-700"
+            >Image by @{{ _get(image, 'user.name') }}</span
+          >
+        </a>
         <div>
-          <button class="border p-1 mr-2 hover:bg-gray-100" role="button">
+          <button class="border p-1 mr-1 hover:bg-gray-100" role="button">
             <download-icon />
           </button>
           <button class="border p-1 rounded hover:bg-gray-100" role="button">
@@ -22,6 +24,7 @@
 <script>
 import DownloadIcon from '@/assets/icons/download.svg?inline'
 import PlusIcon from '@/assets/icons/plus.svg?inline'
+import _get from 'lodash.get'
 
 export default {
   name: 'ImagesList',
@@ -39,6 +42,10 @@ export default {
         return []
       },
     },
+  },
+
+  methods: {
+    _get,
   },
 }
 </script>
