@@ -2,13 +2,17 @@
 
 <p align="center">
   <a href="https://images-searcher.vercel.app/" target="_blank">
-  Live Demo
+  Demo Search Page
   </a>
+  <a href="https://images-searcher.vercel.app/favorites" target="_blank">
+  Demo Favorites Page
+  </a>
+
 </p>
 
 ## Motivation
 
-An images searcher that uses Unsplash API under the hood.
+An images searcher that uses Unsplash API under the hood. There are two pages: search page (default route), and favorite (/favorite).
 
 ## Tech
 
@@ -18,6 +22,7 @@ An images searcher that uses Unsplash API under the hood.
 
 * Nuxt's philosophy is convention over configuration which means the application is already fined tune to a certain extend, this speeds up the development time.
 * Server side rendering is always nice to have for better time to interactive and SEO purpose.
+* Favorites are persisted in local storage for simplicity.
 
 ## TODO
 
