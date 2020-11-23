@@ -16,6 +16,19 @@ An images searcher that uses Unsplash API under the hood.
 - [Vuejs]
 - [TailwindCSS]
 
+* Nuxt's philosophy is convention over configuration which means the application is already fined tune to a certain extend, this speeds up the development time.
+* Server side rendering is always nice to have for better time to interactive and SEO purpose.
+
+## TODO
+
+- [ ] Make list title and description editable.
+- [ ] Use [content loader] for images.
+- [ ] Use [srcset] for better responsiveness.
+- [ ] Lazy load off-screen images. (https://web.dev/lazy-loading/).
+- [ ] Testing.
+- [ ] Handle race conditions on the search bar properly (https://www.youtube.com/watch?v=DWZj56qUNfs).
+- [ ] Add links to switch between home page and favorites page.
+
 ## Build Setup
 
 ```bash
@@ -36,3 +49,5 @@ The application is automatically deployed to [Vercel] on all commits to the `mai
 [vuejs]: https://vuejs.org/
 [tailwindcss]: https://tailwindcss.com/
 [vercel]: https://vercel.com/
+[content loader]: https://github.com/egoist/vue-content-loader
+[srcset]: https://web.dev/use-srcset-to-automatically-choose-the-right-image/
