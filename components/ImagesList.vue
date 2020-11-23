@@ -8,10 +8,19 @@
             >Image by @{{ _get(image, 'user.name') }}</span
           >
         </a>
-        <div>
-          <button class="border p-1 mr-1 hover:bg-gray-100" role="button">
+        <div class="flex">
+          <a
+            class="border p-1 mr-1 hover:bg-gray-100"
+            role="button"
+            title="Download photo"
+            :href="_get(image, 'urls.full')"
+            download
+            rel="nofollow"
+            target="blank"
+            @click="trackDownload(image)"
+          >
             <download-icon />
-          </button>
+          </a>
           <button class="border p-1 rounded hover:bg-gray-100" role="button">
             <plus-icon />
           </button>
@@ -46,6 +55,15 @@ export default {
 
   methods: {
     _get,
+    async trackDownload(image) {
+      try {
+        await this.$imageDownload({
+          photoId: _get(image, 'id'),
+        })
+      } catch (error) {
+        console.log(error)
+      }
+    },
   },
 }
 </script>

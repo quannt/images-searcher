@@ -17,4 +17,18 @@ export default ({ app }, inject) => {
         return {}
       })
   })
+
+  inject('imageDownload', ({ photoId }) => {
+    return unsplash.photos
+      .getPhoto(photoId)
+      .then(toJson)
+      .then((json) => {
+        unsplash.photos.trackDownload(json)
+        return json
+      })
+      .catch((error) => {
+        console.error(error)
+        return {}
+      })
+  })
 }
