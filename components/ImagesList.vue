@@ -2,15 +2,15 @@
   <div class="images-container">
     <figure v-for="image in images" :key="image.id" class="item">
       <img :src="image.urls.regular" />
-      <figcaption>
+      <figcaption class="caption">
         <span
           >Image by @{{ image && image.profile && image.profile.name }}</span
         >
         <div>
-          <button>
+          <button class="border p-1 mr-2 hover:bg-gray-100" role="button">
             <download-icon />
           </button>
-          <button>
+          <button class="border p-1 rounded hover:bg-gray-100" role="button">
             <plus-icon />
           </button>
         </div>
@@ -51,7 +51,7 @@ export default {
   width: 100%;
 }
 
-.images-container figure {
+.images-container .item {
   background: #fefefe;
   border: 2px solid #fcfcfc;
   box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
@@ -63,7 +63,7 @@ export default {
   column-break-inside: avoid;
 }
 
-.images-container figure img {
+.images-container img {
   width: 100%;
   height: auto;
   border-bottom: 1px solid #ccc;
@@ -71,10 +71,12 @@ export default {
   margin-bottom: 5px;
 }
 
-.images-container figure figcaption {
+.images-container .caption {
   font-size: 0.9rem;
   color: #444;
   line-height: 1.5;
+  display: flex;
+  justify-content: space-between;
 }
 
 .images-container small {
