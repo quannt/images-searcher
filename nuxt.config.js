@@ -2,6 +2,10 @@ export default {
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
   ssr: false,
 
+  env: {
+    UNSPLASH_ACCESS_KEY: process.env.UNSPLASH_ACCESS_KEY,
+  },
+
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'server',
 
