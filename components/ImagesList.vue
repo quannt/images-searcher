@@ -22,7 +22,11 @@
             >
               <download-icon />
             </a>
-            <button class="border p-1 rounded hover:bg-gray-100" role="button">
+            <button
+              class="border p-1 rounded hover:bg-gray-100"
+              role="button"
+              @click="handleAddFavorite(image)"
+            >
               <plus-icon />
             </button>
           </div>
@@ -40,6 +44,11 @@
         Load More
       </button>
     </div>
+    <image-favorite-modal
+      v-show="showFavoriteModal"
+      :image="currentImage"
+      @cancel="showFavoriteModal = false"
+    />
   </div>
 </template>
 
@@ -72,6 +81,13 @@ export default {
     },
   },
 
+  data() {
+    return {
+      showFavoriteModal: false,
+      currentImage: null,
+    }
+  },
+
   methods: {
     _get,
     async trackDownload(image) {
@@ -82,6 +98,10 @@ export default {
       // } catch (error) {
       //   console.log(error)
       // }
+    },
+    handleAddFavorite(image) {
+      this.currentImage = image
+      this.showFavoriteModal = true
     },
   },
 }
