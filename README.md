@@ -1,4 +1,20 @@
-# images-searcher
+# Images Searcher
+
+<p align="center">
+  <a href="https://images-searcher.vercel.app/" target="_blank">
+  Live Demo
+  </a>
+</p>
+
+## Motivation
+
+An images searcher that uses Unsplash API under the hood.
+
+## Tech
+
+- [Nuxtjs]
+- [Vuejs]
+- [TailwindCSS]
 
 ## Build Setup
 
