@@ -20,7 +20,10 @@ export default {
   css: [],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['~/plugins/unsplash.js'],
+  plugins: [
+    '~/plugins/unsplash.js',
+    { src: '~/plugins/vuex-persists.js', ssr: false },
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
