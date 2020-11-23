@@ -33,4 +33,9 @@ $ yarn start
 $ yarn generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+The application is automatically deployed to [Vercel] on all commits to the `main` branch.
+
+[nuxtjs]: https://nuxtjs.org
+[vuejs]: https://vuejs.org/
+[tailwindcss]: https://tailwindcss.com/
+[vercel]: https://vercel.com/
