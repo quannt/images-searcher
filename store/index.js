@@ -19,11 +19,11 @@ export const mutations = {
   },
   addImage(state, { listKey, image }) {
     if (!state[listKey]) {
-      Vue.set(state, listKey, {})
+      Vue.set(state.lists, listKey, {})
     }
-    Vue.set(state, `${listKey}.${image.id}`, image)
+    Vue.set(state.lists, `${listKey}`, { [image.id]: image })
   },
   deleteImage(state, { listKey, image }) {
-    Vue.delete(state, `${listKey}.${image.id}`, image)
+    Vue.delete(state.lists, `${listKey}.${image.id}`)
   },
 }
