@@ -27,6 +27,7 @@ An images searcher that uses Unsplash API under the hood. There are two pages: s
 ## TODO
 
 - [ ] Make list title and description editable.
+- [ ] Proxy download image URL to our domain so that the download links can work.
 - [ ] Use [content loader] for images.
 - [ ] Use [srcset] for better responsiveness.
 - [ ] Lazy load off-screen images. (https://web.dev/lazy-loading/).
