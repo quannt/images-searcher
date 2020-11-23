@@ -68,7 +68,7 @@ export default {
   height: auto;
   border-bottom: 1px solid #ccc;
   padding-bottom: 15px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .images-container .caption {
