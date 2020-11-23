@@ -27,6 +27,7 @@
       type="text"
       class="bg-gray-100 p-4 focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300 border"
       placeholder="Search free high-resolution photos"
+      @input="$emit('input', $event.target.value)"
     />
   </div>
 </template>
