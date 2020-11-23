@@ -28,9 +28,6 @@ $ yarn dev
 # build for production and launch server
 $ yarn build
 $ yarn start
-
-# generate static project
-$ yarn generate
 ```
 
 The application is automatically deployed to [Vercel] on all commits to the `main` branch.
