@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import Unsplash, { toJson } from 'unsplash-js'
 
+console.log(process.env.UNSPLASH_ACCESS_KEY, process.env)
 const unsplash = new Unsplash({ accessKey: process.env.UNSPLASH_ACCESS_KEY })
 
 export default ({ app }, inject) => {
