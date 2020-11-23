@@ -1,10 +1,10 @@
 {
   "env": {
-    "UNSPLASH_ACCESS_KEY": "@unsplash-scret-key"
+    "UNSPLASH_ACCESS_KEY": "@unsplash-secret-key"
   },
   "build": {
     "env": {
-      "UNSPLASH_ACCESS_KEY": "@unsplash-scret-key"
+      "UNSPLASH_ACCESS_KEY": "@unsplash-secret-key"
     }
   }
 }
