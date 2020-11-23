@@ -1,0 +1,10 @@
+{
+  "env": {
+    "UNSPLASH_ACCESS_KEY": process.env.UNSPLASH_ACCESS_KEY
+  },
+  "build": {
+    "env": {
+      "UNSPLASH_ACCESS_KEY": process.env.UNSPLASH_ACCESS_KEY
+    }
+  }
+}
