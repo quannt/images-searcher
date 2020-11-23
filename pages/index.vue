@@ -5,7 +5,12 @@
       class="mb-8"
       @input="handleKeywordChange"
     />
-    <images-list v-if="images.length > 0" :images="images" />
+    <images-list
+      v-if="images.length > 0"
+      :images="images"
+      :has-more-images="hasMoreImages"
+      @load-more="handleLoadMoreImages"
+    />
     <div v-else class="flex flex-col justify-items-center items-center">
       <label class="mb-10 text-lg leading-6 font-medium text-gray-700">
         There's no image. Please start searching with a new keyword.
@@ -33,21 +38,39 @@ export default {
       keyword: '',
       page: 1,
       perPage: 30,
+      total: 0,
+      totalPages: 4,
       images: [],
       isLoading: false,
     }
   },
 
+  computed: {
+    hasMoreImages() {
+      return this.page < this.totalPages
+    },
+  },
+
   methods: {
+    async handleLoadMoreImages() {
+      this.page = this.page + 1
+      await this.searchImages({
+        keyword: this.keyword,
+        page: this.page,
+      })
+    },
     handleKeywordChange: _debounce(async function (keyword) {
+      await this.searchImages({ keyword, page: this.page })
+    }, 500),
+    async searchImages({ keyword, page }) {
       this.isLoading = true
       try {
         const result = await this.$imageSearch({
           keyword,
-          page: this.page,
+          page,
           perPage: this.perPage,
         })
-        this.images = result.results || []
+        this.images = [...this.images, ...(result.results || [])]
         this.total = result.total || 0
         this.totalPages = result.total_pages || 0
       } catch (error) {
@@ -56,7 +79,7 @@ export default {
         console.log(error)
       }
       this.isLoading = false
-    }, 500),
+    },
   },
 }
 </script>

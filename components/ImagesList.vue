@@ -1,38 +1,52 @@
 <template>
-  <div class="images-container">
-    <figure v-for="image in images" :key="image.id" class="item">
-      <img :src="image.urls.regular" />
-      <figcaption class="caption">
-        <a :href="_get(image, 'user.links.html')" target="_blank">
-          <span class="text-sm text-gray-700"
-            >Image by @{{ _get(image, 'user.name') }}</span
-          >
-        </a>
-        <div class="flex">
-          <a
-            class="border p-1 mr-1 hover:bg-gray-100"
-            role="button"
-            title="Download photo"
-            :href="_get(image, 'urls.full')"
-            download
-            rel="nofollow"
-            target="blank"
-            @click="trackDownload(image)"
-          >
-            <download-icon />
+  <div>
+    <div class="images-container">
+      <figure v-for="image in images" :key="image.id" class="item">
+        <img :src="image.urls.regular" />
+        <figcaption class="caption">
+          <a :href="_get(image, 'user.links.html')" target="_blank">
+            <span class="text-sm text-gray-700"
+              >Image by @{{ _get(image, 'user.name') }}</span
+            >
           </a>
-          <button class="border p-1 rounded hover:bg-gray-100" role="button">
-            <plus-icon />
-          </button>
-        </div>
-      </figcaption>
-    </figure>
+          <div class="flex">
+            <a
+              class="border p-1 mr-1 hover:bg-gray-100"
+              role="button"
+              title="Download photo"
+              :href="_get(image, 'urls.full')"
+              download
+              rel="nofollow"
+              target="blank"
+              @click="trackDownload(image)"
+            >
+              <download-icon />
+            </a>
+            <button class="border p-1 rounded hover:bg-gray-100" role="button">
+              <plus-icon />
+            </button>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="flex justify-center items-center mt-3">
+      <button
+        v-if="hasMoreImages"
+        type="button"
+        class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-100"
+        @click="$emit('load-more')"
+      >
+        <arrow-down-icon class="mr-2" />
+        Load More
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
 import DownloadIcon from '@/assets/icons/download.svg?inline'
 import PlusIcon from '@/assets/icons/plus.svg?inline'
+import ArrowDownIcon from '@/assets/icons/arrow-down.svg?inline'
 import _get from 'lodash.get'
 
 export default {
@@ -41,6 +55,7 @@ export default {
   components: {
     DownloadIcon,
     PlusIcon,
+    ArrowDownIcon,
   },
 
   props: {
@@ -51,18 +66,22 @@ export default {
         return []
       },
     },
+    hasMoreImages: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   methods: {
     _get,
     async trackDownload(image) {
-      try {
-        await this.$imageDownload({
-          photoId: _get(image, 'id'),
-        })
-      } catch (error) {
-        console.log(error)
-      }
+      // try {
+      //   await this.$imageDownload({
+      //     photoId: _get(image, 'id'),
+      //   })
+      // } catch (error) {
+      //   console.log(error)
+      // }
     },
   },
 }
