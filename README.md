@@ -12,7 +12,7 @@
 
 ## Motivation
 
-An images searcher that uses Unsplash API under the hood. There are two pages: search page (default route), and favorite (/favorite).
+An images searcher that uses Unsplash API under the hood. There are two pages: search page (default route), and favorite (/favorites).
 
 ## Tech
 
